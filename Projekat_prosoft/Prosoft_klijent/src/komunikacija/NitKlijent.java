@@ -321,6 +321,15 @@ public class NitKlijent extends Thread {
                         JOptionPane.showMessageDialog(null, sto.getException().getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
                     }
                 }
+                if (sto.getOperacija() == Konstante.OPERACIJA_KREIRAJ_STATISTIKU_BRAON_TACNE) {
+                    if (sto.getUspesnostIzvrsenjaOperacije() == 1) {
+                        JOptionPane.showMessageDialog(null, sto.getPodaci());
+                        dijalog.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, sto.getException().getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+                        
+                    }
+                }
             }
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(NitKlijent.class.getName()).log(Level.SEVERE, null, ex);

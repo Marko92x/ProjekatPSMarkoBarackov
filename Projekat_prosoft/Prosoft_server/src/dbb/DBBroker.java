@@ -107,6 +107,7 @@ public class DBBroker {
 
         String upit = "delete from " + ido.vratiNazivTabele()
                 + " where " + ido.vratiNazivKoloneID() + " = " + "'" + ido.vratiID() + "'";
+        System.out.println(upit);
         Statement s = connection.createStatement();
         s.executeUpdate(upit);
         s.close();

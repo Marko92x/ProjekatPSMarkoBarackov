@@ -405,6 +405,23 @@ public class KlijentNit extends Thread {
                     }
                     out.writeObject(sto);
                 }
+                if (operacija == Konstante.OPERACIJA_KREIRAJ_STATISTIKU_BRAON_TACNE) {
+                    ServerTransferObjekat sto = new ServerTransferObjekat();
+                    sto.setOperacija(Konstante.OPERACIJA_KREIRAJ_STATISTIKU_BRAON_TACNE);
+                    try {
+                        List<StavkaDnevneBerbe> stavke = Kontroler.getInstance().obracun(((List<Date>)kto.getParametar()).get(0), ((List<Date>)kto.getParametar()).get(1));
+                        Kontroler.getInstance().createPdfStatistikaBraonTacne(stavke, ((List<Date>)kto.getParametar()).get(0), ((List<Date>)kto.getParametar()).get(1));
+                        sto.setUspesnostIzvrsenjaOperacije(1);
+                        sto.setPodaci("Uspesno ste kreirali statistiku!");
+                        PnlServer.jtfKonzolnaLinija.setText("Operacija ,createPdfStatistikaBraonTacne(), Uspesnost: 1");
+                    } catch (Exception ex) {
+                        sto.setUspesnostIzvrsenjaOperacije(-1);
+                        sto.setException(ex);
+                        PnlServer.jtfKonzolnaLinija.setText("Operacija createPdfStatistikaBraonTacne(), Uspesnost: -1");
+                        Logger.getLogger(KlijentNit.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    out.writeObject(sto);
+                }
             }
 
         } catch (IOException ex) {

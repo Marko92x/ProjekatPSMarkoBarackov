@@ -32,4 +32,5 @@ public interface Konstante {
     public static final int OPERACIJA_KREIRAJ_STATISTIKU = 20;
     public static final int OPERACIJA_OBRISI_DNEVNU_BERBU_2 = 21;
     public static final int OPERACIJA_OBRISI_STAVKU = 22;
+    public static final int OPERACIJA_KREIRAJ_STATISTIKU_BRAON_TACNE = 23;
 }

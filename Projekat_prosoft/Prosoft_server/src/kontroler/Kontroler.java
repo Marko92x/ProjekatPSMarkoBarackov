@@ -490,6 +490,9 @@ public class Kontroler {
                 k1.clear();
                 k2.clear();
                 k3.clear();
+                kbt.clear();
+                kbr.clear();
+                kb.clear();
                 //dodavanje u pdf
                 //ciscenje lista
             }
@@ -1229,6 +1232,275 @@ public class Kontroler {
 
             c = new PdfPCell(new Phrase(""));
             c.setColspan(10);
+            table.addCell(c);
+//            table.addCell(c);
+//            table.addCell(c);
+//            table.addCell(c);
+//            table.addCell(c);
+//            table.addCell(c);
+//            table.addCell(c);
+//            table.addCell(c);
+//            table.addCell(c);
+//            table.addCell(c);
+
+            c1 = new PdfPCell(new Phrase("DOBITAK"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            c1.setColspan(2);
+            table.addCell(c1);
+
+            c1 = new PdfPCell(new Phrase(round((ukupnoSvePDV * (110.0f / 100.0f)) - ukupanIznosSvih, 2) + "", font));
+            table.addCell(c1);
+
+            document.add(table);
+            document.add(new Paragraph(" "));
+        } catch (DocumentException ex) {
+            Logger.getLogger(Kontroler.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Kontroler.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Kontroler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        document.close();
+    }
+
+    public void createPdfStatistikaBraonTacne(List<StavkaDnevneBerbe> stavke, Date pocetak, Date kraj) {
+        Document document = new Document();
+        try {
+            document.setPageSize(PageSize.A4.rotate());
+            PdfWriter.getInstance(document,
+                    new FileOutputStream(System.getProperty("user.home") + "/Desktop/StatistikeBraoTacne/" + pocetak + " " + kraj + ".pdf"));
+            document.open();
+//                        String text = "";
+//                        for (int i = 0; i < 10000; i++) {
+//                                text += "test";
+//              ,          }
+//            String jmbg = stavke.get(0).getDobavljac().getJmbg();
+
+            PdfPTable table = new PdfPTable(new float[]{300f, 150f, 150f, 150f, 150f, 150f, 150f, 150f, 150f});
+            table.setWidthPercentage(100);
+            table.setSpacingBefore(0f);
+            table.setSpacingAfter(0f);
+            Paragraph p = new Paragraph("Od: " + pocetak + " do: " + kraj);
+            p.add(new Paragraph(" "));
+            document.add(p);
+            PdfPCell c = new PdfPCell(new Phrase(""));
+//            PdfPCell c1 = new PdfPCell(new Phrase("Sifra"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            c1.setRowspan(2);
+//            c1.setColspan(2);
+//            table.addCell(c1);
+            PdfPCell c1 = new PdfPCell(new Phrase("Dobavljac"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            c1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            c1.setRowspan(2);
+            c1.setColspan(2);
+            table.addCell(c1);
+
+            c1 = new PdfPCell(new Phrase("Braon Tacne"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            c1.setColspan(2);
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase("Braon Rimfuz"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            c1.setColspan(2);
+            table.addCell(c1);
+
+            c1 = new PdfPCell(new Phrase("Svega"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            c1.setColspan(3);
+            table.addCell(c1);
+
+            c1 = new PdfPCell(new Phrase("Kol"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase("Iznos"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase("Kol"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase("Iznos"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase("Kol"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase("Cena"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase("Iznos"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c1);
+
+            Font font = new Font(BaseFont.createFont(), 10, Font.NORMAL);
+
+//                table.setHeaderRows(3);
+            List<String> jmbgovi = new ArrayList<>();
+            Map<Double, Double> kbt = new HashMap<>();
+            Map<Double, Double> kbr = new HashMap<>();
+
+            Map<Double, Double> ukupnoBraonTacneVrednost = new HashMap<>();
+            Map<Double, Double> ukupnoBraonRimfuzVrednost = new HashMap<>();
+            for (StavkaDnevneBerbe stavkaDnevneBerbe : stavke) {
+                if (!jmbgovi.contains(stavkaDnevneBerbe.getDobavljac().getJmbg())) {
+                    jmbgovi.add(stavkaDnevneBerbe.getDobavljac().getJmbg());
+                }
+            }
+            Double ukupnoKolicinaBraonTacne = 0.0;
+            Double ukupnoKolicinaBraonRimfuz = 0.0;
+            Double ukupnoCenaBraonTacne = 0.0;
+            Double ukupnoCenaBraonRimfuz = 0.0;
+            Double ukupanIznosSvih = 0.0;
+            for (String j : jmbgovi) {
+                String imeDobavljaca = null;
+                for (StavkaDnevneBerbe stavkaDnevneBerbe : stavke) {
+                    if (stavkaDnevneBerbe.getDobavljac().getJmbg().equals(j)) {
+                        if (imeDobavljaca == null) {
+                            imeDobavljaca = stavkaDnevneBerbe.getDobavljac().getIme() + " " + stavkaDnevneBerbe.getDobavljac().getPrezime();
+
+                        }
+                        if (!kbt.containsKey(stavkaDnevneBerbe.getCenaBraonTacne()) && stavkaDnevneBerbe.getCenaBraonTacne()!= 0) {
+                            kbt.put(stavkaDnevneBerbe.getCenaBraonTacne(), new Double(0));
+                        }
+                        if (!kbr.containsKey(stavkaDnevneBerbe.getCenaBraonRimfuz()) && stavkaDnevneBerbe.getCenaBraonRimfuz()!= 0) {
+                            kbr.put(stavkaDnevneBerbe.getCenaBraonRimfuz(), new Double(0));
+                        }
+                    }
+                }
+                for (StavkaDnevneBerbe s : stavke) {
+                    if (s.getDobavljac().getJmbg().equals(j)) {
+                        if (kbt.containsKey(s.getCenaBraonTacne())) {
+                            kbt.put(s.getCenaBraonTacne(), kbt.get(s.getCenaBraonTacne()) + s.getBraonTacne());
+                        }
+                        if (kbr.containsKey(s.getCenaBraonRimfuz())) {
+                            kbr.put(s.getCenaBraonRimfuz(), kbr.get(s.getCenaBraonRimfuz()) + s.getBraonRimfuz());
+                        }
+                    }
+                }
+                c1 = new PdfPCell(new Phrase(imeDobavljaca));
+                c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c1.setColspan(2);
+                table.addCell(c1);
+                Iterator it = kbt.entrySet().iterator();
+                Double ukupnoKolicinaBt = 0.0;
+                Double ukupnoCenaBt = 0.0;
+                Double ukupanIznosBt = 0.0;
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry) it.next();
+                    ukupnoKolicinaBt += (Double) pair.getValue();
+                    ukupnoCenaBt += (Double) pair.getKey();
+                    ukupanIznosBt += ((Double) pair.getValue() * (Double) pair.getKey());
+                    if (ukupnoBraonTacneVrednost.containsKey((Double) pair.getKey())) {
+                        ukupnoBraonTacneVrednost.put((Double) pair.getKey(), ukupnoBraonTacneVrednost.get((Double) pair.getKey()) + ((Double) pair.getKey() * (Double) pair.getValue()));
+                    } else {
+                        ukupnoBraonTacneVrednost.put((Double) pair.getKey(), (Double) pair.getKey() * (Double) pair.getValue());
+                    }
+                }
+                c1 = new PdfPCell(new Phrase(round(ukupnoKolicinaBt, 2) + "", font));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase(round(ukupanIznosBt, 2) + "", font));
+                table.addCell(c1);
+
+                it = kbr.entrySet().iterator();
+                Double ukupnoKolicinaBr = 0.0;
+                Double ukupnoCenaBr = 0.0;
+                Double ukupanIznosBr = 0.0;
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry) it.next();
+                    ukupnoKolicinaBr += (Double) pair.getValue();
+                    ukupnoCenaBr += (Double) pair.getKey();
+                    ukupanIznosBr += ((Double) pair.getValue() * (Double) pair.getKey());
+                    if (ukupnoBraonRimfuzVrednost.containsKey((Double) pair.getKey())) {
+                        ukupnoBraonRimfuzVrednost.put((Double) pair.getKey(), ukupnoBraonRimfuzVrednost.get((Double) pair.getKey()) + ((Double) pair.getKey() * (Double) pair.getValue()));
+                    } else {
+                        ukupnoBraonRimfuzVrednost.put((Double) pair.getKey(), (Double) pair.getKey() * (Double) pair.getValue());
+                    }
+                }
+                c1 = new PdfPCell(new Phrase(round(ukupnoKolicinaBr, 2) + "", font));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase(round(ukupanIznosBr, 2) + "", font));
+                table.addCell(c1);
+
+                Double ukupnoKolicina = ukupnoKolicinaBt + ukupnoKolicinaBr;
+                Double ukupnoVrednost = ukupanIznosBt + ukupanIznosBr;
+                Double ukupnoCena = ukupnoVrednost / ukupnoKolicina;
+                c1 = new PdfPCell(new Phrase(round(ukupnoKolicina, 2) + "", font));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase(round(ukupnoCena, 2) + "", font));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase(round(ukupnoVrednost, 2) + "", font));
+                table.addCell(c1);
+
+                ukupanIznosSvih += ukupnoVrednost;
+
+                ukupnoKolicinaBraonTacne += ukupnoKolicinaBt;
+                ukupnoKolicinaBraonRimfuz += ukupnoKolicinaBr;
+
+                ukupnoCenaBraonTacne += ukupanIznosBt;
+                ukupnoCenaBraonRimfuz += ukupanIznosBr;
+
+                kbt.clear();
+                kbr.clear();
+            }
+            c1 = new PdfPCell(new Phrase("UKUPNO"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            c1.setColspan(2);
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase(ukupnoKolicinaBraonTacne + "", font));
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase(ukupnoCenaBraonTacne + "", font));
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase(ukupnoKolicinaBraonRimfuz + "", font));
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase(ukupnoCenaBraonRimfuz + "", font));
+            table.addCell(c1);
+
+            Double ukupnoKolicinaSve = ukupnoKolicinaBraonTacne + ukupnoKolicinaBraonRimfuz;
+            Double prosecnaCena = ukupanIznosSvih / ukupnoKolicinaSve;
+
+            c1 = new PdfPCell(new Phrase(round(ukupnoKolicinaSve, 2) + "", font));
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase(round(prosecnaCena, 2) + "", font));
+            table.addCell(c1);
+            c1 = new PdfPCell(new Phrase(round(ukupanIznosSvih, 2) + "", font));
+            table.addCell(c1);
+
+            //PDV
+            c1 = new PdfPCell(new Phrase("PDV"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            c1.setColspan(2);
+            table.addCell(c1);
+            table.addCell(c);
+
+            Iterator it = ukupnoBraonTacneVrednost.entrySet().iterator();
+            Double ukupnoBraonTacnePdv = 0.0;
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                ukupnoBraonTacnePdv += (Double) pair.getValue();
+            }
+            c1 = new PdfPCell(new Phrase(round(ukupnoBraonTacnePdv * (110.0f / 100.0f), 2) + "", font));
+            table.addCell(c1);
+            c = new PdfPCell(new Phrase(""));
+            table.addCell(c);
+
+            it = ukupnoBraonRimfuzVrednost.entrySet().iterator();
+            Double ukupnoBraonRimfuzPdv = 0.0;
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                ukupnoBraonRimfuzPdv += (Double) pair.getValue();
+            }
+            c1 = new PdfPCell(new Phrase(round(ukupnoBraonRimfuzPdv * (110.0f / 100.0f), 2) + "", font));
+            table.addCell(c1);
+            c = new PdfPCell(new Phrase(""));
+            c.setColspan(2);
+            table.addCell(c);
+
+            Double ukupnoSvePDV = ukupnoBraonTacnePdv + ukupnoBraonRimfuzPdv;
+            c1 = new PdfPCell(new Phrase(round(ukupnoSvePDV * (110.0f / 100.0f), 2) + "", font));
+            table.addCell(c1);
+
+            c = new PdfPCell(new Phrase(""));
+            c.setColspan(6);
             table.addCell(c);
 //            table.addCell(c);
 //            table.addCell(c);

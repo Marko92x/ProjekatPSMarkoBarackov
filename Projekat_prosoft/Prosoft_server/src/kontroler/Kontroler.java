@@ -213,6 +213,9 @@ public class Kontroler {
             Map<Double, Double> k1 = new HashMap<>();
             Map<Double, Double> k2 = new HashMap<>();
             Map<Double, Double> k3 = new HashMap<>();
+            Map<Double, Double> kbt = new HashMap<>();
+            Map<Double, Double> kbr = new HashMap<>();
+            Map<Double, Double> kb = new HashMap<>();
 
             for (StavkaDnevneBerbe stavkaDnevneBerbe : stavke) {
                 if (!jmbgovi.contains(stavkaDnevneBerbe.getDobavljac().getJmbg())) {
@@ -223,6 +226,9 @@ public class Kontroler {
             Map<Double, Double> ukupnoPrvaKlasa = new HashMap<>();
             Map<Double, Double> ukupnoDrugaKlasa = new HashMap<>();
             Map<Double, Double> ukupnoTrecaKlasa = new HashMap<>();
+            Map<Double, Double> ukupnoBraonTacne = new HashMap<>();
+            Map<Double, Double> ukupnoBraonRimfuz = new HashMap<>();
+            Map<Double, Double> ukupnoBukovaca = new HashMap<>();
             for (String j : jmbgovi) {
                 String imeDobavljaca = null;
                 for (StavkaDnevneBerbe stavkaDnevneBerbe : stavke) {
@@ -243,6 +249,15 @@ public class Kontroler {
                         if (!k3.containsKey(stavkaDnevneBerbe.getCenaTrecaKlasa()) && stavkaDnevneBerbe.getCenaTrecaKlasa() != 0) {
                             k3.put(stavkaDnevneBerbe.getCenaTrecaKlasa(), new Double(0));
                         }
+                        if (!kbt.containsKey(stavkaDnevneBerbe.getCenaBraonTacne()) && stavkaDnevneBerbe.getCenaBraonTacne()!= 0) {
+                            kbt.put(stavkaDnevneBerbe.getCenaBraonTacne(), new Double(0));
+                        }
+                        if (!kbr.containsKey(stavkaDnevneBerbe.getCenaBraonRimfuz()) && stavkaDnevneBerbe.getCenaBraonRimfuz()!= 0) {
+                            kbr.put(stavkaDnevneBerbe.getCenaBraonRimfuz(), new Double(0));
+                        }
+                        if (!kb.containsKey(stavkaDnevneBerbe.getCenaBukovaca()) && stavkaDnevneBerbe.getCenaBukovaca()!= 0) {
+                            kb.put(stavkaDnevneBerbe.getCenaBukovaca(), new Double(0));
+                        }
                     }
                 }
                 for (StavkaDnevneBerbe s : stavke) {
@@ -258,6 +273,15 @@ public class Kontroler {
                         }
                         if (k3.containsKey(s.getCenaTrecaKlasa())) {
                             k3.put(s.getCenaTrecaKlasa(), k3.get(s.getCenaTrecaKlasa()) + s.getTrecaKlasa());
+                        }
+                        if (kbt.containsKey(s.getCenaBraonTacne())) {
+                            kbt.put(s.getCenaBraonTacne(), kbt.get(s.getCenaBraonTacne()) + s.getBraonTacne());
+                        }
+                        if (kbr.containsKey(s.getCenaBraonRimfuz())) {
+                            kbr.put(s.getCenaBraonRimfuz(), kbr.get(s.getCenaBraonRimfuz()) + s.getBraonRimfuz());
+                        }
+                        if (kb.containsKey(s.getCenaBukovaca())) {
+                            kb.put(s.getCenaBukovaca(), kb.get(s.getCenaBukovaca()) + s.getBukovaca());
                         }
                     }
                 }
@@ -377,9 +401,83 @@ public class Kontroler {
                     table.addCell(c);
                     table.addCell(round(ukupnoCenaTr, 2) + "");
                 }
+                
+                it = kbt.entrySet().iterator();
+                Double ukupnoKolicinaBt = 0.0;
+                Double ukupnoCenaBt = 0.0;
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry) it.next();
+                    table.addCell("Braon tacne");
+                    table.addCell(round((Double) pair.getValue(), 2) + "");
+                    table.addCell(round((Double) pair.getKey(), 2) + "");
+                    ukupnoKolicinaBt += (Double) pair.getValue();
+                    ukupnoCenaBt += ((Double) pair.getKey() * (Double) pair.getValue());
+                    table.addCell(round((Double) pair.getKey() * (Double) pair.getValue(), 2) + "");
+                    if (!ukupnoBraonTacne.containsKey((Double) pair.getKey())) {
+                        ukupnoBraonTacne.put((Double) pair.getKey(), (Double) pair.getValue());
+                    } else {
+                        ukupnoBraonTacne.put((Double) pair.getKey(), ukupnoBraonTacne.get((Double) pair.getKey()) + (Double) pair.getValue());
+                    }
+                }
+                if (ukupnoKolicinaBt != 0) {
+                    table.addCell(c);
+                    table.addCell(round(ukupnoKolicinaBt, 2) + "");
+                    table.addCell(c);
+                    table.addCell(round(ukupnoCenaBt, 2) + "");
+                }
+                
+                it = kbr.entrySet().iterator();
+                Double ukupnoKolicinaBr = 0.0;
+                Double ukupnoCenaBr = 0.0;
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry) it.next();
+                    table.addCell("Braon rimfuz");
+                    table.addCell(round((Double) pair.getValue(), 2) + "");
+                    table.addCell(round((Double) pair.getKey(), 2) + "");
+                    ukupnoKolicinaBr += (Double) pair.getValue();
+                    ukupnoCenaBr += ((Double) pair.getKey() * (Double) pair.getValue());
+                    table.addCell(round((Double) pair.getKey() * (Double) pair.getValue(), 2) + "");
+                    if (!ukupnoBraonRimfuz.containsKey((Double) pair.getKey())) {
+                        ukupnoBraonRimfuz.put((Double) pair.getKey(), (Double) pair.getValue());
+                    } else {
+                        ukupnoBraonRimfuz.put((Double) pair.getKey(), ukupnoBraonRimfuz.get((Double) pair.getKey()) + (Double) pair.getValue());
+                    }
+                }
+                if (ukupnoKolicinaBr != 0) {
+                    table.addCell(c);
+                    table.addCell(round(ukupnoKolicinaBr, 2) + "");
+                    table.addCell(c);
+                    table.addCell(round(ukupnoCenaBr, 2) + "");
+                }
+                
+                it = kb.entrySet().iterator();
+                Double ukupnoKolicinaB = 0.0;
+                Double ukupnoCenaB = 0.0;
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry) it.next();
+                    table.addCell("Bukovaca");
+                    table.addCell(round((Double) pair.getValue(), 2) + "");
+                    table.addCell(round((Double) pair.getKey(), 2) + "");
+                    ukupnoKolicinaB += (Double) pair.getValue();
+                    ukupnoCenaB += ((Double) pair.getKey() * (Double) pair.getValue());
+                    table.addCell(round((Double) pair.getKey() * (Double) pair.getValue(), 2) + "");
+                    if (!ukupnoBukovaca.containsKey((Double) pair.getKey())) {
+                        ukupnoBukovaca.put((Double) pair.getKey(), (Double) pair.getValue());
+                    } else {
+                        ukupnoBukovaca.put((Double) pair.getKey(), ukupnoBukovaca.get((Double) pair.getKey()) + (Double) pair.getValue());
+                    }
+                }
+                if (ukupnoKolicinaB != 0) {
+                    table.addCell(c);
+                    table.addCell(round(ukupnoKolicinaB, 2) + "");
+                    table.addCell(c);
+                    table.addCell(round(ukupnoCenaB, 2) + "");
+                }
 
-                Double ukupnoCena = ukupnoCenaD + ukupnoCenaP + ukupnoCenaT + ukupnoCenaTr;
-                Double ukupnoKolicina = ukupnoKolicinaD + ukupnoKolicinaP + ukupnoKolicinaT + ukupnoKolicinaTr;
+                Double ukupnoCena = ukupnoCenaD + ukupnoCenaP + ukupnoCenaT + ukupnoCenaTr
+                        + ukupnoCenaBt + ukupnoCenaBr + ukupnoCenaB;
+                Double ukupnoKolicina = ukupnoKolicinaD + ukupnoKolicinaP + ukupnoKolicinaT + ukupnoKolicinaTr
+                        + ukupnoKolicinaBt + ukupnoKolicinaBr + ukupnoKolicinaB;
 
                 table.addCell("UKUPNO:");
                 table.addCell(round(ukupnoKolicina, 2) + "");
@@ -486,9 +584,68 @@ public class Kontroler {
                 table.addCell(c);
                 table.addCell(round(ukupnoVrednostTr, 2) + "");
             }
+            
+            it = ukupnoBraonTacne.entrySet().iterator();
+            Double ukupnoKolicinaBt = 0.0;
+            Double ukupnoVrednostBt = 0.0;
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                table.addCell("Braon tacne");
+                table.addCell(round((Double) pair.getValue(), 2) + "");
+                table.addCell(round((Double) pair.getKey(), 2) + "");
+                ukupnoKolicinaBt += (Double) pair.getValue();
+                ukupnoVrednostBt += ((Double) pair.getKey() * (Double) pair.getValue());
+                table.addCell(round((Double) pair.getKey() * (Double) pair.getValue(), 2) + "");
+            }
+            if (ukupnoKolicinaBt != 0) {
+                table.addCell(c);
+                table.addCell(round(ukupnoKolicinaBt, 2) + "");
+                table.addCell(c);
+                table.addCell(round(ukupnoVrednostBt, 2) + "");
+            }
 
-            Double ukupnoVrednostSve = ukupnoVrednostT + ukupnoVrednostP + ukupnoVrednostD + ukupnoVrednostTr;
-            Double ukupnoKolicina = ukupnoKolicinaD + ukupnoKolicinaP + ukupnoKolicinaT + ukupnoKolicinaTr;
+            it = ukupnoBraonRimfuz.entrySet().iterator();
+            Double ukupnoKolicinaBr = 0.0;
+            Double ukupnoVrednostBr = 0.0;
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                table.addCell("Braon rimfuz");
+                table.addCell(round((Double) pair.getValue(), 2) + "");
+                table.addCell(round((Double) pair.getKey(), 2) + "");
+                ukupnoKolicinaBr += (Double) pair.getValue();
+                ukupnoVrednostBr += ((Double) pair.getKey() * (Double) pair.getValue());
+                table.addCell(round((Double) pair.getKey() * (Double) pair.getValue(), 2) + "");
+            }
+            if (ukupnoKolicinaBr != 0) {
+                table.addCell(c);
+                table.addCell(round(ukupnoKolicinaBr, 2) + "");
+                table.addCell(c);
+                table.addCell(round(ukupnoVrednostBr, 2) + "");
+            }
+            
+            it = ukupnoBukovaca.entrySet().iterator();
+            Double ukupnoKolicinaB = 0.0;
+            Double ukupnoVrednostB = 0.0;
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                table.addCell("Bukovaca");
+                table.addCell(round((Double) pair.getValue(), 2) + "");
+                table.addCell(round((Double) pair.getKey(), 2) + "");
+                ukupnoKolicinaB += (Double) pair.getValue();
+                ukupnoVrednostB += ((Double) pair.getKey() * (Double) pair.getValue());
+                table.addCell(round((Double) pair.getKey() * (Double) pair.getValue(), 2) + "");
+            }
+            if (ukupnoKolicinaB != 0) {
+                table.addCell(c);
+                table.addCell(round(ukupnoKolicinaB, 2) + "");
+                table.addCell(c);
+                table.addCell(round(ukupnoVrednostB, 2) + "");
+            }
+            
+            Double ukupnoVrednostSve = ukupnoVrednostT + ukupnoVrednostP + ukupnoVrednostD + ukupnoVrednostTr 
+                    + ukupnoVrednostBt + ukupnoVrednostBr + ukupnoVrednostB;
+            Double ukupnoKolicina = ukupnoKolicinaD + ukupnoKolicinaP + ukupnoKolicinaT + ukupnoKolicinaTr
+                    + ukupnoKolicinaBt + ukupnoKolicinaBr + ukupnoKolicinaB;
 
             table.addCell("UKUPNO:");
             table.addCell(round(ukupnoKolicina, 2) + "");
@@ -581,6 +738,22 @@ public class Kontroler {
             c1.setHorizontalAlignment(Element.ALIGN_CENTER);
             c1.setColspan(2);
             table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase("III Klasa"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            c1.setColspan(2);
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase("Braon Tacne"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            c1.setColspan(2);
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase("Braon Rimfuz"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            c1.setColspan(2);
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase("Bukovaca"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            c1.setColspan(2);
+//            table.addCell(c1);
             c1 = new PdfPCell(new Phrase("Svega"));
             c1.setHorizontalAlignment(Element.ALIGN_CENTER);
             c1.setColspan(3);
@@ -612,6 +785,24 @@ public class Kontroler {
             c1 = new PdfPCell(new Phrase("Kol"));
             c1.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase("Iznos"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase("Kol"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase("Iznos"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase("Kol"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase("Iznos"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase("Kol"));
+//            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            table.addCell(c1);
             c1 = new PdfPCell(new Phrase("Cena"));
             c1.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(c1);
@@ -627,11 +818,17 @@ public class Kontroler {
             Map<Double, Double> k1 = new HashMap<>();
             Map<Double, Double> k2 = new HashMap<>();
             Map<Double, Double> k3 = new HashMap<>();
+//            Map<Double, Double> kbt = new HashMap<>();
+//            Map<Double, Double> kbr = new HashMap<>();
+//            Map<Double, Double> kb = new HashMap<>();
 
             Map<Double, Double> ukupnoTacneVrednost = new HashMap<>();
             Map<Double, Double> ukupnoPrvaKlasaVrednost = new HashMap<>();
             Map<Double, Double> ukupnoDrugaKlasaVrednost = new HashMap<>();
             Map<Double, Double> ukupnoTrecaKlasaVrednost = new HashMap<>();
+//            Map<Double, Double> ukupnoBraonTacneVrednost = new HashMap<>();
+//            Map<Double, Double> ukupnoBraonRimfuzVrednost = new HashMap<>();
+//            Map<Double, Double> ukupnoBukovacaVrednost = new HashMap<>();
             for (StavkaDnevneBerbe stavkaDnevneBerbe : stavke) {
                 if (!jmbgovi.contains(stavkaDnevneBerbe.getDobavljac().getJmbg())) {
                     jmbgovi.add(stavkaDnevneBerbe.getDobavljac().getJmbg());
@@ -641,10 +838,16 @@ public class Kontroler {
             Double ukupnoKolicinaPrvaKlasa = 0.0;
             Double ukupnoKolicinaDrugaKlasa = 0.0;
             Double ukupnoKolicinaTrecaKlasa = 0.0;
+//            Double ukupnoKolicinaBraonTacne = 0.0;
+//            Double ukupnoKolicinaBraonRimfuz = 0.0;
+//            Double ukupnoKolicinaBukovaca = 0.0;
             Double ukupnoCenaTacne = 0.0;
             Double ukupnoCenaPrvaKlasa = 0.0;
             Double ukupnoCenaDrugaKlasa = 0.0;
             Double ukupnoCenaTrecaKlasa = 0.0;
+//            Double ukupnoCenaBraonTacne = 0.0;
+//            Double ukupnoCenaBraonRimfuz = 0.0;
+//            Double ukupnoCenaBukovaca = 0.0;
             Double ukupanIznosSvih = 0.0;
             for (String j : jmbgovi) {
                 String imeDobavljaca = null;
@@ -666,6 +869,15 @@ public class Kontroler {
                         if (!k3.containsKey(stavkaDnevneBerbe.getCenaTrecaKlasa()) && stavkaDnevneBerbe.getCenaTrecaKlasa() != 0) {
                             k3.put(stavkaDnevneBerbe.getCenaTrecaKlasa(), new Double(0));
                         }
+//                        if (!kbt.containsKey(stavkaDnevneBerbe.getCenaBraonTacne()) && stavkaDnevneBerbe.getCenaBraonTacne()!= 0) {
+//                            kbt.put(stavkaDnevneBerbe.getCenaBraonTacne(), new Double(0));
+//                        }
+//                        if (!kbr.containsKey(stavkaDnevneBerbe.getCenaBraonRimfuz()) && stavkaDnevneBerbe.getCenaBraonRimfuz()!= 0) {
+//                            kbr.put(stavkaDnevneBerbe.getCenaBraonRimfuz(), new Double(0));
+//                        }
+//                        if (!kb.containsKey(stavkaDnevneBerbe.getCenaBukovaca()) && stavkaDnevneBerbe.getCenaBukovaca()!= 0) {
+//                            kb.put(stavkaDnevneBerbe.getCenaBukovaca(), new Double(0));
+//                        }
                     }
                 }
                 for (StavkaDnevneBerbe s : stavke) {
@@ -682,6 +894,15 @@ public class Kontroler {
                         if (k3.containsKey(s.getCenaTrecaKlasa())) {
                             k3.put(s.getCenaTrecaKlasa(), k3.get(s.getCenaTrecaKlasa()) + s.getTrecaKlasa());
                         }
+//                        if (kbt.containsKey(s.getCenaBraonTacne())) {
+//                            kbt.put(s.getCenaBraonTacne(), kbt.get(s.getCenaBraonTacne()) + s.getBraonTacne());
+//                        }
+//                        if (kbr.containsKey(s.getCenaBraonRimfuz())) {
+//                            kbr.put(s.getCenaBraonRimfuz(), kbr.get(s.getCenaBraonRimfuz()) + s.getBraonRimfuz());
+//                        }
+//                        if (kb.containsKey(s.getCenaBukovaca())) {
+//                            kb.put(s.getCenaBukovaca(), kb.get(s.getCenaBukovaca()) + s.getBukovaca());
+//                        }
                     }
                 }
                 c1 = new PdfPCell(new Phrase(imeDobavljaca));
@@ -768,8 +989,72 @@ public class Kontroler {
                 table.addCell(c1);
                 c1 = new PdfPCell(new Phrase(round(ukupanIznosT, 2) + "", font));
                 table.addCell(c1);
+//                
+//                it = kbt.entrySet().iterator();
+//                Double ukupnoKolicinaBt = 0.0;
+//                Double ukupnoCenaBt = 0.0;
+//                Double ukupanIznosBt = 0.0;
+//                while (it.hasNext()) {
+//                    Map.Entry pair = (Map.Entry) it.next();
+//                    ukupnoKolicinaBt += (Double) pair.getValue();
+//                    ukupnoCenaBt += (Double) pair.getKey();
+//                    ukupanIznosBt += ((Double) pair.getValue() * (Double) pair.getKey());
+//                    if (ukupnoBraonTacneVrednost.containsKey((Double) pair.getKey())) {
+//                        ukupnoBraonTacneVrednost.put((Double) pair.getKey(), ukupnoBraonTacneVrednost.get((Double) pair.getKey()) + ((Double) pair.getKey() * (Double) pair.getValue()));
+//                    } else {
+//                        ukupnoBraonTacneVrednost.put((Double) pair.getKey(), (Double) pair.getKey() * (Double) pair.getValue());
+//                    }
+//                }
+//                c1 = new PdfPCell(new Phrase(round(ukupnoKolicinaBt, 2) + "", font));
+//                table.addCell(c1);
+//                c1 = new PdfPCell(new Phrase(round(ukupanIznosBt, 2) + "", font));
+//                table.addCell(c1);
+//                
+//                it = kbr.entrySet().iterator();
+//                Double ukupnoKolicinaBr = 0.0;
+//                Double ukupnoCenaBr = 0.0;
+//                Double ukupanIznosBr = 0.0;
+//                while (it.hasNext()) {
+//                    Map.Entry pair = (Map.Entry) it.next();
+//                    ukupnoKolicinaBr += (Double) pair.getValue();
+//                    ukupnoCenaBr += (Double) pair.getKey();
+//                    ukupanIznosBr += ((Double) pair.getValue() * (Double) pair.getKey());
+//                    if (ukupnoBraonRimfuzVrednost.containsKey((Double) pair.getKey())) {
+//                        ukupnoBraonRimfuzVrednost.put((Double) pair.getKey(), ukupnoBraonRimfuzVrednost.get((Double) pair.getKey()) + ((Double) pair.getKey() * (Double) pair.getValue()));
+//                    } else {
+//                        ukupnoBraonRimfuzVrednost.put((Double) pair.getKey(), (Double) pair.getKey() * (Double) pair.getValue());
+//                    }
+//                }
+//                c1 = new PdfPCell(new Phrase(round(ukupnoKolicinaBr, 2) + "", font));
+//                table.addCell(c1);
+//                c1 = new PdfPCell(new Phrase(round(ukupanIznosBr, 2) + "", font));
+//                table.addCell(c1);
+//                
+//                it = kb.entrySet().iterator();
+//                Double ukupnoKolicinaB = 0.0;
+//                Double ukupnoCenaB = 0.0;
+//                Double ukupanIznosB = 0.0;
+//                while (it.hasNext()) {
+//                    Map.Entry pair = (Map.Entry) it.next();
+//                    ukupnoKolicinaB += (Double) pair.getValue();
+//                    ukupnoCenaB += (Double) pair.getKey();
+//                    ukupanIznosB += ((Double) pair.getValue() * (Double) pair.getKey());
+//                    if (ukupnoBukovacaVrednost.containsKey((Double) pair.getKey())) {
+//                        ukupnoBukovacaVrednost.put((Double) pair.getKey(), ukupnoBukovacaVrednost.get((Double) pair.getKey()) + ((Double) pair.getKey() * (Double) pair.getValue()));
+//                    } else {
+//                        ukupnoBukovacaVrednost.put((Double) pair.getKey(), (Double) pair.getKey() * (Double) pair.getValue());
+//                    }
+//                }
+//                c1 = new PdfPCell(new Phrase(round(ukupnoKolicinaB, 2) + "", font));
+//                table.addCell(c1);
+//                c1 = new PdfPCell(new Phrase(round(ukupanIznosB, 2) + "", font));
+//                table.addCell(c1);
+                ////////////
+                
                 Double ukupnoKolicina = ukupnoKolicinaT + ukupnoKolicinaP + ukupnoKolicinaD + ukupnoKolicinaTr;
+//                        + ukupnoKolicinaBt + ukupnoKolicinaBr + ukupnoKolicinaB;
                 Double ukupnoVrednost = ukupanIznos + ukupanIznosP + ukupanIznosD + ukupanIznosT;
+//                        + ukupanIznosBt + ukupanIznosBr + ukupanIznosB;
                 Double ukupnoCena = ukupnoVrednost / ukupnoKolicina;
                 c1 = new PdfPCell(new Phrase(round(ukupnoKolicina, 2) + "", font));
                 table.addCell(c1);
@@ -784,16 +1069,25 @@ public class Kontroler {
                 ukupnoKolicinaPrvaKlasa += ukupnoKolicinaP;
                 ukupnoKolicinaDrugaKlasa += ukupnoKolicinaD;
                 ukupnoKolicinaTrecaKlasa += ukupnoKolicinaTr;
+//                ukupnoKolicinaBraonTacne += ukupnoKolicinaBt;
+//                ukupnoKolicinaBraonRimfuz += ukupnoKolicinaBr;
+//                ukupnoKolicinaBukovaca += ukupnoKolicinaB;
 
                 ukupnoCenaTacne += ukupanIznos;
                 ukupnoCenaPrvaKlasa += ukupanIznosP;
                 ukupnoCenaDrugaKlasa += ukupanIznosD;
                 ukupnoCenaTrecaKlasa += ukupanIznosT;
+//                ukupnoCenaBraonTacne += ukupanIznosBt;
+//                ukupnoCenaBraonRimfuz += ukupanIznosBr;
+//                ukupnoCenaBukovaca += ukupanIznosB;
 
                 kt.clear();
                 k1.clear();
                 k2.clear();
                 k3.clear();
+//                kbt.clear();
+//                kbr.clear();
+//                kb.clear();
             }
             c1 = new PdfPCell(new Phrase("UKUPNO"));
             c1.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -815,8 +1109,21 @@ public class Kontroler {
             table.addCell(c1);
             c1 = new PdfPCell(new Phrase(ukupnoCenaTrecaKlasa + "", font));
             table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase(ukupnoKolicinaBraonTacne + "", font));
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase(ukupnoCenaBraonTacne + "", font));
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase(ukupnoKolicinaBraonRimfuz + "", font));
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase(ukupnoCenaBraonRimfuz + "", font));
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase(ukupnoKolicinaBukovaca + "", font));
+//            table.addCell(c1);
+//            c1 = new PdfPCell(new Phrase(ukupnoCenaBukovaca + "", font));
+//            table.addCell(c1);
 
             Double ukupnoKolicinaSve = ukupnoKolicinaTacne + ukupnoKolicinaPrvaKlasa + ukupnoKolicinaDrugaKlasa + ukupnoKolicinaTrecaKlasa;
+//                    + ukupnoKolicinaBraonTacne + ukupnoKolicinaBraonRimfuz + ukupnoKolicinaBukovaca;
             Double prosecnaCena = ukupanIznosSvih / ukupnoKolicinaSve;
 
             c1 = new PdfPCell(new Phrase(round(ukupnoKolicinaSve, 2) + "", font));
@@ -878,8 +1185,45 @@ public class Kontroler {
             c = new PdfPCell(new Phrase(""));
             c.setColspan(2);
             table.addCell(c);
+            
+//            it = ukupnoBraonTacneVrednost.entrySet().iterator();
+//            Double ukupnoBraonTacnePdv = 0.0;
+//            while (it.hasNext()) {
+//                Map.Entry pair = (Map.Entry) it.next();
+//                ukupnoBraonTacnePdv += (Double) pair.getValue();
+//            }
+//            c1 = new PdfPCell(new Phrase(round(ukupnoBraonTacnePdv * (110.0f / 100.0f), 2) + "", font));
+//            table.addCell(c1);
+//            c = new PdfPCell(new Phrase(""));
+//            c.setColspan(2);
+//            table.addCell(c);
+//            
+//            it = ukupnoBraonRimfuzVrednost.entrySet().iterator();
+//            Double ukupnoBraonRimfuzPdv = 0.0;
+//            while (it.hasNext()) {
+//                Map.Entry pair = (Map.Entry) it.next();
+//                ukupnoBraonRimfuzPdv += (Double) pair.getValue();
+//            }
+//            c1 = new PdfPCell(new Phrase(round(ukupnoBraonRimfuzPdv * (110.0f / 100.0f), 2) + "", font));
+//            table.addCell(c1);
+//            c = new PdfPCell(new Phrase(""));
+//            c.setColspan(2);
+//            table.addCell(c);
+//            
+//            it = ukupnoBukovacaVrednost.entrySet().iterator();
+//            Double ukupnoBukovacaPdv = 0.0;
+//            while (it.hasNext()) {
+//                Map.Entry pair = (Map.Entry) it.next();
+//                ukupnoBukovacaPdv += (Double) pair.getValue();
+//            }
+//            c1 = new PdfPCell(new Phrase(round(ukupnoBukovacaPdv * (110.0f / 100.0f), 2) + "", font));
+//            table.addCell(c1);
+//            c = new PdfPCell(new Phrase(""));
+//            c.setColspan(2);
+//            table.addCell(c);
 
             Double ukupnoSvePDV = ukupnoTacnePdv + ukupnoPrvaKlasaPdv + ukupnoDrugaKlasaPdv + ukupnoTrecaKlasaPdv;
+//                    + ukupnoBraonTacnePdv + ukupnoBraonRimfuzPdv + ukupnoBukovacaPdv;
             c1 = new PdfPCell(new Phrase(round(ukupnoSvePDV * (110.0f / 100.0f), 2) + "", font));
             table.addCell(c1);
 

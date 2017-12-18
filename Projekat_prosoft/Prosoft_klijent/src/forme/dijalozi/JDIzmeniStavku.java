@@ -64,6 +64,18 @@ public class JDIzmeniStavku extends javax.swing.JDialog {
         jtfCenaDrugaKlasa = new javax.swing.JTextField();
         jtfCenaTrecaKlasa = new javax.swing.JTextField();
         jbtnSacuvaj = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jtfBraonTacne = new javax.swing.JTextField();
+        jtfBraonRimfuz = new javax.swing.JTextField();
+        jtfBukovaca = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jtfCenaBraonTacne = new javax.swing.JTextField();
+        jtfCenaBraonRimfuz = new javax.swing.JTextField();
+        jtfCenaBukovaca = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -90,52 +102,84 @@ public class JDIzmeniStavku extends javax.swing.JDialog {
             }
         });
 
+        jLabel9.setText("Braon tacne:");
+
+        jLabel10.setText("Braon rimfuz:");
+
+        jLabel11.setText("Bukovaca:");
+
+        jLabel12.setText("Cena:");
+
+        jLabel13.setText("Cena:");
+
+        jLabel14.setText("Cena:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfTrecaKlasa)
-                            .addComponent(jtfDrugaKlasa)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
                         .addGap(27, 27, 27)
-                        .addComponent(jtfPrvaKlasa))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addComponent(jtfTacne, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfTrecaKlasa)
+                                    .addComponent(jtfDrugaKlasa)
+                                    .addComponent(jtfBraonTacne)
+                                    .addComponent(jtfBraonRimfuz)
+                                    .addComponent(jtfBukovaca)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(27, 27, 27)
+                                .addComponent(jtfPrvaKlasa))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                                .addComponent(jtfTacne, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfCenaPrvaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfCenaDrugaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfCenaTrecaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfCenaTacne, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfCenaBraonTacne, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfCenaBraonRimfuz, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfCenaBukovaca, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfCenaPrvaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfCenaDrugaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfCenaTrecaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfCenaTacne, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnSacuvaj, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88)))
                 .addGap(43, 43, 43))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(jbtnSacuvaj, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,9 +209,27 @@ public class JDIzmeniStavku extends javax.swing.JDialog {
                         .addComponent(jLabel8)
                         .addComponent(jtfCenaTrecaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4))
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jtfBraonTacne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jtfCenaBraonTacne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jtfBraonRimfuz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(jtfCenaBraonRimfuz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jtfBukovaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addComponent(jtfCenaBukovaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jbtnSacuvaj)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -187,6 +249,12 @@ public class JDIzmeniStavku extends javax.swing.JDialog {
             s.setCenaDrugaKlasa(Double.parseDouble(jtfCenaDrugaKlasa.getText()));
             s.setTrecaKlasa(Double.parseDouble(jtfTrecaKlasa.getText()));
             s.setCenaTrecaKlasa(Double.parseDouble(jtfCenaTrecaKlasa.getText()));
+            s.setBraonTacne(Double.parseDouble(jtfBraonTacne.getText()));
+            s.setCenaBraonTacne(Double.parseDouble(jtfCenaBraonTacne.getText()));
+            s.setBraonRimfuz(Double.parseDouble(jtfBraonRimfuz.getText()));
+            s.setCenaBraonRimfuz(Double.parseDouble(jtfCenaBraonRimfuz.getText()));
+            s.setBukovaca(Double.parseDouble(jtfBukovaca.getText()));
+            s.setCenaBukovaca(Double.parseDouble(jtfCenaBukovaca.getText()));
             NitKlijent.getInstance().setDijalog(this);
             KlijentTransferObjekat kto = new KlijentTransferObjekat();
             kto.setOperacija(Konstante.OPERACIJA_IZMENI_STAVKU);
@@ -252,6 +320,11 @@ public class JDIzmeniStavku extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -259,7 +332,14 @@ public class JDIzmeniStavku extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JButton jbtnSacuvaj;
+    private javax.swing.JTextField jtfBraonRimfuz;
+    private javax.swing.JTextField jtfBraonTacne;
+    private javax.swing.JTextField jtfBukovaca;
+    private javax.swing.JTextField jtfCenaBraonRimfuz;
+    private javax.swing.JTextField jtfCenaBraonTacne;
+    private javax.swing.JTextField jtfCenaBukovaca;
     private javax.swing.JTextField jtfCenaDrugaKlasa;
     private javax.swing.JTextField jtfCenaPrvaKlasa;
     private javax.swing.JTextField jtfCenaTacne;
@@ -279,5 +359,11 @@ public class JDIzmeniStavku extends javax.swing.JDialog {
         jtfCenaPrvaKlasa.setText(stavka.getCenaPrvaKlasa() + "");
         jtfCenaDrugaKlasa.setText(stavka.getCenaDrugaKlasa() + "");
         jtfCenaTrecaKlasa.setText(stavka.getCenaTrecaKlasa() + "");
+        jtfBraonTacne.setText(stavka.getBraonTacne() + "");
+        jtfCenaBraonTacne.setText(stavka.getCenaBraonTacne() + "");
+        jtfBraonRimfuz.setText(stavka.getBraonRimfuz() + "");
+        jtfCenaBraonRimfuz.setText(stavka.getCenaBraonRimfuz() + "");
+        jtfBukovaca.setText(stavka.getBukovaca() + "");
+        jtfCenaBukovaca.setText(stavka.getCenaBukovaca() + "");
     }
 }

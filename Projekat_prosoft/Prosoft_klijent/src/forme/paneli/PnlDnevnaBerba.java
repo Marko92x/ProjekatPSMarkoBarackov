@@ -111,6 +111,21 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         jtfDan = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jtfBraonTacne = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jtfCenaBraonTacne = new javax.swing.JTextField();
+        jtfCenaBraonRimfuz = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jtfBraonRimfuz = new javax.swing.JTextField();
+        jtfBukovaca = new javax.swing.JTextField();
+        jtfCenaBukovaca = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -185,7 +200,7 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
                     .addComponent(jlbClan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jbtnVidiDnevnuBerbu)
@@ -262,16 +277,16 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(22, 22, 22)
                 .addComponent(jbtnKreirajStavku)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jbtnKreirajStavku)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         jbtnIzbrisiStavku.setText("Izbriši stavku");
@@ -293,6 +308,24 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
         jLabel18.setText("Mesec");
 
         jLabel19.setText("Dan");
+
+        jLabel20.setText("Braon tacne:");
+
+        jLabel21.setText("kg.");
+
+        jLabel22.setText("Cena:");
+
+        jLabel23.setText("Cena:");
+
+        jLabel24.setText("Cena:");
+
+        jLabel25.setText("Braon rimfuz:");
+
+        jLabel26.setText("Bukovaca:");
+
+        jLabel27.setText("kg.");
+
+        jLabel28.setText("kg.");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -335,40 +368,73 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel8)
-                                    .addComponent(jLabel12))))
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel25)
+                                    .addComponent(jLabel26))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtfDrugaKlasa, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                                .addComponent(jtfPrvaKlasa, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jtfTacne, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jtfTrecaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel16))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jtfDrugaKlasa, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                        .addComponent(jtfPrvaKlasa, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jtfTacne, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jtfTrecaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel13)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel16))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel15))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel14))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel7)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jtfCenaTacne, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                        .addComponent(jtfCenaPrvaKlasa)
+                                        .addComponent(jtfCenaDrugaKlasa))
+                                    .addComponent(jtfCenaTrecaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jtfBraonTacne, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel21))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jtfBraonRimfuz, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel27))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jtfBukovaca, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel28)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel15))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtfCenaTacne, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                                .addComponent(jtfCenaPrvaKlasa)
-                                .addComponent(jtfCenaDrugaKlasa))
-                            .addComponent(jtfCenaTrecaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel23)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jtfCenaBraonRimfuz, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel24)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jtfCenaBukovaca, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel22)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jtfCenaBraonTacne, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 56, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbtnIzbrisiStavku)
@@ -427,11 +493,32 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
                             .addComponent(jLabel13)
                             .addComponent(jLabel16)
                             .addComponent(jtfCenaTrecaKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(jtfBraonTacne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)
+                            .addComponent(jtfCenaBraonTacne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(jtfCenaBraonRimfuz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel25)
+                            .addComponent(jtfBraonRimfuz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel26)
+                            .addComponent(jtfBukovaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfCenaBukovaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28))
+                        .addGap(43, 43, 43)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbtnSacuvaj, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jbtnIzbrisiStavku, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jbtnSacuvaj, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -492,20 +579,32 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
             stavka.setPrvaKlasa(Double.parseDouble(jtfPrvaKlasa.getText()));
             stavka.setDrugaKlasa(Double.parseDouble(jtfDrugaKlasa.getText()));
             stavka.setTrecaKlasa(Double.parseDouble(jtfTrecaKlasa.getText()));
+            stavka.setBraonTacne(Double.parseDouble(jtfBraonTacne.getText()));
+            stavka.setBraonRimfuz(Double.parseDouble(jtfBraonRimfuz.getText()));
+            stavka.setBukovaca(Double.parseDouble(jtfBukovaca.getText()));
             stavka.setCenaTacne(Double.parseDouble(jtfCenaTacne.getText()));
             stavka.setCenaPrvaKlasa(Double.parseDouble(jtfCenaPrvaKlasa.getText()));
             stavka.setCenaTrecaKlasa(Double.parseDouble(jtfCenaTrecaKlasa.getText()));
             stavka.setCenaDrugaKlasa(Double.parseDouble(jtfCenaDrugaKlasa.getText()));
+            stavka.setCenaBraonTacne(Double.parseDouble(jtfCenaBraonTacne.getText()));
+            stavka.setCenaBraonRimfuz(Double.parseDouble(jtfCenaBraonRimfuz.getText()));
+            stavka.setCenaBukovaca(Double.parseDouble(jtfCenaBukovaca.getText()));
             NitKlijent.getInstance().getPomocnaListaStavki().add(stavka);
             refreshTable();
             jtfTacne.setText("");
             jtfPrvaKlasa.setText("");
             jtfDrugaKlasa.setText("");
             jtfTrecaKlasa.setText("");
+            jtfBraonTacne.setText("");
+            jtfBraonRimfuz.setText("");
+            jtfBukovaca.setText("");
             jtfCenaTacne.setText("");
             jtfCenaPrvaKlasa.setText("");
             jtfCenaDrugaKlasa.setText("");
             jtfCenaTrecaKlasa.setText("");
+            jtfCenaBraonTacne.setText("");
+            jtfCenaBraonRimfuz.setText("");
+            jtfCenaBukovaca.setText("");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Greska pri unosu elemenata stavke");
             e.printStackTrace();
@@ -608,6 +707,15 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -631,6 +739,12 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
     public static javax.swing.JLabel jlbIDDnevneBerbe;
     public static javax.swing.JTable jtblDnevneBerbe;
     public static javax.swing.JTable jtblStavke;
+    private javax.swing.JTextField jtfBraonRimfuz;
+    private javax.swing.JTextField jtfBraonTacne;
+    private javax.swing.JTextField jtfBukovaca;
+    private javax.swing.JTextField jtfCenaBraonRimfuz;
+    private javax.swing.JTextField jtfCenaBraonTacne;
+    private javax.swing.JTextField jtfCenaBukovaca;
     private javax.swing.JTextField jtfCenaDrugaKlasa;
     private javax.swing.JTextField jtfCenaPrvaKlasa;
     private javax.swing.JTextField jtfCenaTacne;
@@ -677,10 +791,16 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
         jtfPrvaKlasa.setEnabled(a);
         jtfDrugaKlasa.setEnabled(a);
         jtfTrecaKlasa.setEnabled(a);
+        jtfBraonTacne.setEnabled(a);
+        jtfBraonRimfuz.setEnabled(a);
+        jtfBukovaca.setEnabled(a);
         jtfCenaTacne.setEnabled(a);
         jtfCenaPrvaKlasa.setEnabled(a);
         jtfCenaDrugaKlasa.setEnabled(a);
         jtfCenaTrecaKlasa.setEnabled(a);
+        jtfCenaBraonTacne.setEnabled(a);
+        jtfCenaBraonRimfuz.setEnabled(a);
+        jtfCenaBukovaca.setEnabled(a);
 
     }
 
@@ -708,6 +828,24 @@ public class PnlDnevnaBerba extends javax.swing.JPanel {
         }
         if (jtfCenaTrecaKlasa.getText().equals("")) {
             jtfCenaTrecaKlasa.setText(0 + "");
+        }
+        if (jtfBraonTacne.getText().equals("")) {
+            jtfBraonTacne.setText(0 + "");
+        }
+        if (jtfCenaBraonTacne.getText().equals("")) {
+            jtfCenaBraonTacne.setText(0 + "");
+        }
+        if (jtfBraonRimfuz.getText().equals("")) {
+            jtfBraonRimfuz.setText(0 + "");
+        }
+        if (jtfCenaBraonRimfuz.getText().equals("")) {
+            jtfCenaBraonRimfuz.setText(0 + "");
+        }
+        if (jtfBukovaca.getText().equals("")) {
+            jtfBukovaca.setText(0 + "");
+        }
+        if (jtfCenaBukovaca.getText().equals("")) {
+            jtfCenaBukovaca.setText(0 + "");
         }
     }
 

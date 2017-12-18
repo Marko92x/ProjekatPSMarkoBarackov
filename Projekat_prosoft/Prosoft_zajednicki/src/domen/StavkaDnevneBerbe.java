@@ -30,6 +30,12 @@ public class StavkaDnevneBerbe implements IDomenskiObjekat{
     private double cenaPrvaKlasa;
     private double cenaDrugaKlasa;
     private double cenaTrecaKlasa;
+    private double braonTacne;
+    private double braonRimfuz;
+    private double bukovaca;
+    private double cenaBraonTacne;
+    private double cenaBraonRimfuz;
+    private double cenaBukovaca;
 
     public StavkaDnevneBerbe() {
         dobavljac = new Dobavljac();
@@ -120,6 +126,54 @@ public class StavkaDnevneBerbe implements IDomenskiObjekat{
         this.cenaTrecaKlasa = cenaTrecaKlasa;
     }
 
+    public double getBraonTacne() {
+        return braonTacne;
+    }
+
+    public void setBraonTacne(double braonTacne) {
+        this.braonTacne = braonTacne;
+    }
+
+    public double getBraonRimfuz() {
+        return braonRimfuz;
+    }
+
+    public void setBraonRimfuz(double braonRimfuz) {
+        this.braonRimfuz = braonRimfuz;
+    }
+
+    public double getBukovaca() {
+        return bukovaca;
+    }
+
+    public void setBukovaca(double bukovaca) {
+        this.bukovaca = bukovaca;
+    }
+
+    public double getCenaBraonTacne() {
+        return cenaBraonTacne;
+    }
+
+    public void setCenaBraonTacne(double cenaBraonTacne) {
+        this.cenaBraonTacne = cenaBraonTacne;
+    }
+
+    public double getCenaBraonRimfuz() {
+        return cenaBraonRimfuz;
+    }
+
+    public void setCenaBraonRimfuz(double cenaBraonRimfuz) {
+        this.cenaBraonRimfuz = cenaBraonRimfuz;
+    }
+
+    public double getCenaBukovaca() {
+        return cenaBukovaca;
+    }
+
+    public void setCenaBukovaca(double cenaBukovaca) {
+        this.cenaBukovaca = cenaBukovaca;
+    }
+    
     @Override
     public String vratiNazivTabele() {
         return "stavkadnevneberbe";
@@ -127,7 +181,13 @@ public class StavkaDnevneBerbe implements IDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaInsert() {
-        return "(jmbg, dnevnaberbaid, tacne, prvaklasa, drugaklasa, trecaklasa, cenatacne, cenaprvaklasa, cenadrugaklasa, cenatrecaklasa) VALUES ('" + dobavljac.getJmbg() + "', " + dnevnaBerba.getDnevnaBerbaID() + ", " + tacne + ", " + prvaKlasa + ", " + drugaKlasa + ", " + trecaKlasa + "," + cenaTacne + ", " + cenaPrvaKlasa + ", " + cenaDrugaKlasa + ", " + cenaTrecaKlasa + ")";
+        return "(jmbg, dnevnaberbaid, tacne, prvaklasa, drugaklasa, trecaklasa, cenatacne, cenaprvaklasa, cenadrugaklasa, cenatrecaklasa, braontacne, braonrimfuz, bukovaca, cenabraontacne, cenabraonrimfuz, cenabukovaca) VALUES ('" 
+                + dobavljac.getJmbg() + "', " + dnevnaBerba.getDnevnaBerbaID() 
+                + ", " + tacne + ", " + prvaKlasa + ", " + drugaKlasa 
+                + ", " + trecaKlasa + "," + cenaTacne + ", " + cenaPrvaKlasa 
+                + ", " + cenaDrugaKlasa + ", " + cenaTrecaKlasa + ", " + braonTacne 
+                + ", " + braonRimfuz + ", " + bukovaca + ", " + cenaBraonTacne + ", " 
+                + cenaBraonRimfuz + ", " + cenaBukovaca + ")";
     }
 
     @Override
@@ -153,6 +213,12 @@ public class StavkaDnevneBerbe implements IDomenskiObjekat{
             sdb.setCenaPrvaKlasa(rs.getDouble("cenaprvaklasa"));
             sdb.setCenaDrugaKlasa(rs.getDouble("cenadrugaklasa"));
             sdb.setCenaTrecaKlasa(rs.getDouble("cenatrecaklasa"));
+            sdb.setBraonTacne(rs.getDouble("braontacne"));
+            sdb.setBraonRimfuz(rs.getDouble("braonrimfuz"));
+            sdb.setBukovaca(rs.getDouble("bukovaca"));
+            sdb.setCenaBraonTacne(rs.getDouble("cenabraontacne"));
+            sdb.setCenaBraonRimfuz(rs.getDouble("cenabraonrimfuz"));
+            sdb.setCenaBukovaca(rs.getDouble("cenabukovaca"));
             return sdb;
         } catch (SQLException ex) {
             Logger.getLogger(StavkaDnevneBerbe.class.getName()).log(Level.SEVERE, null, ex);
@@ -179,6 +245,12 @@ public class StavkaDnevneBerbe implements IDomenskiObjekat{
             cenaPrvaKlasa = rs.getDouble("cenaprvaklasa");
             cenaDrugaKlasa = rs.getDouble("cenadrugaklasa");
             cenaTrecaKlasa = rs.getDouble("cenatrecaklasa");
+            braonTacne = rs.getDouble("braontacne");
+            braonRimfuz = rs.getDouble("braonrimfuz");
+            bukovaca = rs.getDouble("bukovaca");
+            cenaBraonTacne = rs.getDouble("cenabraontacne");
+            cenaBraonRimfuz = rs.getDouble("cenabraonrimfuz");
+            cenaBukovaca = rs.getDouble("cenabukovaca");
         } catch (SQLException ex) {
             Logger.getLogger(StavkaDnevneBerbe.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -199,7 +271,22 @@ public class StavkaDnevneBerbe implements IDomenskiObjekat{
 
     @Override
     public String vratiStringZaUpdate() {
-        return "jmbg = '" + dobavljac.getJmbg() + "', dnevnaberbaid = " + dnevnaBerba.getDnevnaBerbaID() + ", tacne = " + tacne + ", prvaklasa = " + prvaKlasa + ", drugaklasa = " + drugaKlasa + ", trecaklasa = " + trecaKlasa + ", cenatacne = " + cenaTacne + ", cenaprvaklasa = " + cenaPrvaKlasa + ", cenadrugaklasa = " + cenaDrugaKlasa + ", cenatrecaklasa = " + cenaTrecaKlasa;
+        return "jmbg = '" + dobavljac.getJmbg() 
+                + "', dnevnaberbaid = " + dnevnaBerba.getDnevnaBerbaID() 
+                + ", tacne = " + tacne 
+                + ", prvaklasa = " + prvaKlasa 
+                + ", drugaklasa = " + drugaKlasa 
+                + ", trecaklasa = " + trecaKlasa 
+                + ", cenatacne = " + cenaTacne 
+                + ", cenaprvaklasa = " + cenaPrvaKlasa 
+                + ", cenadrugaklasa = " + cenaDrugaKlasa 
+                + ", cenatrecaklasa = " + cenaTrecaKlasa
+                + ", braontacne = " + braonTacne
+                + ", braonrimfuz = " + braonRimfuz
+                + ", bukovaca = " + bukovaca
+                + ", cenabraontacne = " + cenaBraonTacne
+                + ", cenabraonrimfuz = " + cenaBraonRimfuz
+                + ", cenabukovaca = " + bukovaca;
     }
 
     @Override

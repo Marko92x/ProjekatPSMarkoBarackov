@@ -22,7 +22,7 @@ public class TableModelStavkaDnevneBerbe extends AbstractTableModel{
         this.stavke = stavke;
     }
     
-    String[] nazivKolona = new String[]{"Tacne", "Prva klasa", "Druga klasa", "Treca klasa"};
+    String[] nazivKolona = new String[]{"Tacne", "Prva klasa", "Druga klasa", "Treca klasa", "Braon tacne", "Braon rimfuz", "Bukovaca"};
     
     @Override
     public int getRowCount() {
@@ -31,7 +31,7 @@ public class TableModelStavkaDnevneBerbe extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 7;
     }
 
     @Override
@@ -46,6 +46,12 @@ public class TableModelStavkaDnevneBerbe extends AbstractTableModel{
                 return stavka.getDrugaKlasa();
             case 3:
                 return stavka.getTrecaKlasa();
+            case 4:
+                return stavka.getBraonTacne();
+            case 5:
+                return stavka.getBraonRimfuz();
+            case 6:
+                return stavka.getBukovaca();
             default:
                 return null;
         }

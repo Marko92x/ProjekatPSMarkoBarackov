@@ -509,19 +509,11 @@ public class Kontroler {
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
                 table.addCell("Tacne");
-                if ((Double) pair.getKey() == 110) {
-                    table.addCell(round((Double) pair.getValue(), 2) + "");
-                    table.addCell(round(106.0, 2) + "");
-                    ukupnoKolicinaT += (Double) pair.getValue();
-                    ukupnoVrednostT += (106 * (Double) pair.getValue());
-                    table.addCell(round(106 * (Double) pair.getValue(), 2) + "");
-                } else {
-                    table.addCell(round((Double) pair.getValue(), 2) + "");
-                    table.addCell(round((Double) pair.getKey(), 2) + "");
-                    ukupnoKolicinaT += (Double) pair.getValue();
-                    ukupnoVrednostT += ((Double) pair.getKey() * (Double) pair.getValue());
-                    table.addCell(round((Double) pair.getKey() * (Double) pair.getValue(), 2) + "");
-                }
+                table.addCell(round((Double) pair.getValue(), 2) + "");
+                table.addCell(round((Double) pair.getKey(), 2) + "");
+                ukupnoKolicinaT += (Double) pair.getValue();
+                ukupnoVrednostT += ((Double) pair.getKey() * (Double) pair.getValue());
+                table.addCell(round((Double) pair.getKey() * (Double) pair.getValue(), 2) + "");
             }
             if (ukupnoKolicinaT != 0) {
                 c.setBorder(0);
@@ -1149,11 +1141,7 @@ public class Kontroler {
             Double ukupnoTacnePdv = 0.0;
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
-                if ((Double) pair.getKey() == 110) {
-                    ukupnoTacnePdv += (((Double) pair.getValue() / (Double) pair.getKey()) * 106);
-                } else {
-                    ukupnoTacnePdv += (Double) pair.getValue();
-                }
+                ukupnoTacnePdv += (Double) pair.getValue();
             }
             c1 = new PdfPCell(new Phrase(round(ukupnoTacnePdv * (110.0f / 100.0f), 2) + "", font));
             table.addCell(c1);
